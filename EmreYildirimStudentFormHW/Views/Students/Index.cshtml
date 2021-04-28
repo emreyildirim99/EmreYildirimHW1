@@ -1,0 +1,61 @@
+@model IEnumerable<EmreYildirimStudentFormHW.Models.Student>
+
+@{
+    ViewData["Title"] = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Student List</h1>
+
+<p>
+    <a class="btn btn-success" asp-action="Create">Create a New Student</a>
+</p>
+<table class="text-center table table-striped table-dark">
+    <thead>
+    <tr>
+        <th scope="col">
+            @Html.DisplayNameFor(model => model.Id)
+        </th>
+        <th scope="col">
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th scope="col">
+            @Html.DisplayNameFor(model => model.Surname)
+        </th>
+        <th scope="col">
+            Edit
+        </th>
+        <th scope="col">
+            Details
+        </th>
+        <th scope="col">
+            Delete
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model) {
+        <tr>
+            <th scope="row">
+                @Html.DisplayFor(modelItem => item.Id)
+            </th>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Surname)
+            </td>
+            <td>
+                <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+            </td>
+            <td>
+                <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.Id">Details</a>
+            </td>
+            <td>
+                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
